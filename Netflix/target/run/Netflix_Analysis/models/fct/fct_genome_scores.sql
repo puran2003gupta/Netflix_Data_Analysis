@@ -1,0 +1,23 @@
+
+  
+    
+
+create or replace transient table NETFLIX.DEV.fct_genome_scores
+    
+    
+    
+    as (WITH src_scores AS (
+    SELECT * FROM NETFLIX.DEV.src_genome_scores
+)
+
+SELECT
+    movie_id,
+    tag_id,
+    ROUND(relevance, 4) AS relevance_score
+FROM src_scores
+WHERE relevance > 0
+    )
+;
+
+
+  
